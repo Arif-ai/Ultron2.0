@@ -176,7 +176,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // After handling the image upload, for example, in handleSubmit function
   document.getElementById('uploadedImage').style.display = 'block';
 
-
   // Handle camera input change event to hide the uploaded image
   cameraInput.addEventListener('change', () => {
     uploadedImage.style.display = 'none'; // Hide uploaded image when camera input is used
