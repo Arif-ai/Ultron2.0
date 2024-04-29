@@ -5,7 +5,7 @@ body {
   --accent-color: #8000ff;
   color: #202124;
   --font-size: 16px;
-  /* Default font size*/
+  /* Default font size */
   background-color: #efefef;
 }
 
@@ -30,6 +30,10 @@ background-color: #ffffff;
 }
 .dark-mode #float{
   background-color: #131314;
+}
+
+#float img.image-float {
+  /* Your CSS styles for the images inside the #float div with the class image-float go here */
 }
 
 div {
@@ -147,6 +151,7 @@ label {
   font-size: 24px;
   font-weight: 900;
   background: linear-gradient(to right, #ff0080, #8000ff);
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: move 1s linear infinite;
   background-size: 200% auto;
@@ -237,6 +242,7 @@ input:read-only {
 }
 #answer
 {background-color: #e7e7e7;}
+.dark-mode #answer{}
 
 .loader {
   display: block;
@@ -334,6 +340,7 @@ h1:hover {
   font-size: 24px;
   font-weight: 900;
   background: linear-gradient(to right, #ff0080, #8000ff);
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: move 1s linear infinite;
   background-size: 200% auto;
@@ -430,12 +437,15 @@ h1:hover {
   transition: 0.3s ease-out;
  }
  
- .ext-body {
+ .text-body {
   color: rgb(134, 134, 134);
  }
 
  .dark-mode  .text-body {
   color: rgb(255, 255, 255);
+ }
+ .dark-mode .card-button{
+  color:;
  }
  
  /*Text*/
