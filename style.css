@@ -1,6 +1,6 @@
 body {
   margin: 24px;
-  font-family: "Roboto", "san-serif";
+  font-family: 'Arial';
   /* Use Gemini font with fallback to sans-serif */
   --accent-color: #8000ff;
   color: #202124;
@@ -55,9 +55,7 @@ div {
   color: var(--accent-color);
 }
 
-* {
-  outline-color: var(--accent-color);
-}
+
 
 h1 {
   display: block;
@@ -232,6 +230,12 @@ button:hover {
   cursor: not-allowed;
 }
 
+#updateButton {
+  display: block;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
 /* features */
 input:read-only {
   background-color: #e7e7e7;
@@ -387,8 +391,6 @@ h1:hover {
 .image-float {
   animation: float 3s ease-in-out infinite;
   /* Add your image below */
-  background-image: url('path-to-your-image.jpg');
-  background-size: cover;
   width: 500px;
   /* or the width of your image */
   height: 500px;
@@ -396,3 +398,69 @@ h1:hover {
   border-radius: 50px;
   /* optional, for rounded corners */
 }
+
+
+.card {
+  width: 190px;
+  height: 254px;
+  border-radius: 20px;
+  background: #f5f5f5;
+  position: relative;
+  padding: 1.8rem;
+  border: 2px solid var(--accent-color);
+  transition: 0.5s ease-out;
+  overflow: visible;
+ }
+ 
+ .card-details {
+  color: black;
+  height: 100%;
+  gap: .5em;
+  display: grid;
+  font-size:larger;
+  place-content: center;
+ }
+ 
+ .card-button {
+  transform: translate(-50%, 125%);
+  width: 60%;
+  border-radius: 1rem;
+  border: none;
+  background-color: var(--accent-color);
+  color: #fff;
+  font-size: 1rem;
+  padding: .5rem 1rem;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  opacity: 0;
+  transition: 0.3s ease-out;
+ }
+ 
+ .text-body {
+  color: rgb(134, 134, 134);
+ }
+
+ .dark-mode  .text-body {
+  color: rgb(255, 255, 255);
+ }
+ .dark-mode .card-button{
+  color:
+ }
+ 
+ /*Text*/
+ .text-title {
+  font-size: 1.5em;
+  font-weight: bold;
+ }
+ 
+ /*Hover*/
+ .card:hover {
+  border-color: #ff0080;
+  box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
+ }
+ 
+ .card:hover .card-button {
+  transform: translate(-50%, 50%);
+  opacity: 1;
+ }

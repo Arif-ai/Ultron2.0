@@ -10,7 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('imageForm');
   const promptInput = document.querySelector('input[name="prompt"]');
   const output = document.querySelector('.output');
-  const extraIngredientsDiv = document.getElementById('extraIngredientsDiv');
+  const similar_recipe = document.querySelector('.similar_recipe');
+  const output_preview_1 = document.querySelector('.output_preview_1');
+  const output_preview_2 = document.querySelector('.output_preview_2');
+  const output_preview_3 = document.querySelector('.output_preview_3');
+    const extraIngredientsDiv = document.getElementById('extraIngredientsDiv');
   const extraIngredientsInput = document.getElementById('extraIngredients');
   const imageUpload = document.getElementById('imageUpload');
   const cameraInput = document.getElementById('cameraInput');
@@ -25,13 +29,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const answer = document.querySelector('input[name="answer"]');
   const copy = document.querySelector('button[name="copy"]');
 
-  /*edit.addEventListener('click', function () {
-    if (answer.hasAttribute('readonly')) {
-      answer.removeAttribute('readonly')
-    } else {
-      answer.setAttribute('readonly', 'readonly');
-    }
-  })*/
+  //preview
+  const preview_recipe_1 = document.getElementById('preview_recipe_1');
+  const preview_recipe_2 = document.getElementById('preview_recipe_2');
+  const preview_recipe_3 = document.getElementById('preview_recipe_3');
+
 
   copy.addEventListener('click', function () {
     var copyText = output.innerText;
@@ -44,10 +46,17 @@ document.addEventListener('DOMContentLoaded', () => {
     loader.style.display = 'block';
   })
 
-  async function handleSubmit(file) {
+  regenerate.addEventListener('click', function () {
+    output.innerHTML = '';
+    loader.style.display = 'block';
+  })
+
+
+  async function handleSubmit(file, prompt) {
     loader.style.display = 'block';
     notfound.setAttribute('hidden', 'hidden');
     extraIngredientsDiv.style.display = 'flex';
+    incompatible.style.display = 'block';
     startgenerate.setAttribute('hidden', 'hidden');
 
     try {
@@ -61,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
             role: 'user',
             parts: [
               { inline_data: { mime_type: 'image/jpeg', data: imageBase64 } },
-              { text: promptInput.value }
+              { text: prompt }
             ]
           }
         ];
@@ -92,6 +101,136 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error(e);
       output.innerHTML += '<hr>' + e;
     }
+
+    try {
+      const reader = new FileReader();
+
+      reader.onloadend = async function () {
+        let imageBase64 = reader.result.replace(/^data:image\/[a-z]+;base64,/, "");
+
+        let contents = [
+          {
+            role: 'user',
+            parts: [
+              { inline_data: { mime_type: 'image/jpeg', data: imageBase64 } },
+              { text: "Just the name of the dish name using the same ingredients. Dish name only text 2 words must come from a different country. Do not generate the recipes or ingredients."  }
+            ]
+          }
+        ];
+
+        const genAI = new GoogleGenerativeAI(API_KEY);
+        const model = genAI.getGenerativeModel({
+          model: "gemini-pro-vision",
+          safetySettings: [
+            {
+              category: HarmCategory.HARM_CATEGORY_HARASSMENT,
+              threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
+            },
+          ],
+        });
+
+        const result = await model.generateContentStream({ contents });
+
+        let buffer = [];
+        let md = new MarkdownIt();
+        for await (let response of result.stream) {
+          buffer.push(response.text());
+          output_preview_1.innerHTML = md.render(buffer.join(''));
+        }
+      };
+
+      reader.readAsDataURL(file);
+    } catch (e) {
+      console.error(e);
+      output_preview_1.innerHTML += '<hr>' + e;
+    }
+    try {
+      const reader = new FileReader();
+
+      reader.onloadend = async function () {
+        let imageBase64 = reader.result.replace(/^data:image\/[a-z]+;base64,/, "");
+
+        let contents = [
+          {
+            role: 'user',
+            parts: [
+              { inline_data: { mime_type: 'image/jpeg', data: imageBase64 } },
+              { text: "Just the name of the dish name using the same ingredients. Dish name only text 2 words must come from a different country. Do not generate the recipes or ingredients." }
+            ]
+          }
+        ];
+
+        const genAI = new GoogleGenerativeAI(API_KEY);
+        const model = genAI.getGenerativeModel({
+          model: "gemini-pro-vision",
+          safetySettings: [
+            {
+              category: HarmCategory.HARM_CATEGORY_HARASSMENT,
+              threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
+            },
+          ],
+        });
+
+        const result = await model.generateContentStream({ contents });
+
+        let buffer = [];
+        let md = new MarkdownIt();
+        for await (let response of result.stream) {
+          buffer.push(response.text());
+          output_preview_2.innerHTML = md.render(buffer.join(''));
+        }
+      };
+
+      reader.readAsDataURL(file);
+    } catch (e) {
+      console.error(e);
+      output_preview_2.innerHTML += '<hr>' + e;
+    }
+
+    try {
+      const reader = new FileReader();
+
+      reader.onloadend = async function () {
+        let imageBase64 = reader.result.replace(/^data:image\/[a-z]+;base64,/, "");
+
+        let contents = [
+          {
+            role: 'user',
+            parts: [
+              { inline_data: { mime_type: 'image/jpeg', data: imageBase64 } },
+              { text: "Just the name of the dish name using the same ingredients. Dish name only text 2 words must come from a different country. Do not generate the recipes or ingredients." }
+            ]
+          }
+        ];
+
+        const genAI = new GoogleGenerativeAI(API_KEY);
+        const model = genAI.getGenerativeModel({
+          model: "gemini-pro-vision",
+          safetySettings: [
+            {
+              category: HarmCategory.HARM_CATEGORY_HARASSMENT,
+              threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
+            },
+          ],
+        });
+
+        const result = await model.generateContentStream({ contents });
+
+        let buffer = [];
+        let md = new MarkdownIt();
+        for await (let response of result.stream) {
+          buffer.push(response.text());
+          output_preview_3.innerHTML = md.render(buffer.join(''));
+        }
+      };
+
+      reader.readAsDataURL(file);
+    } catch (e) {
+      console.error(e);
+      output_preview_3.innerHTML += '<hr>' + e;
+    }
+
+
   }
 
   form.onsubmit = (ev) => {
@@ -99,12 +238,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const imageFile = imageUpload.files[0] || cameraInput.files[0];
     if (imageFile) {
+
+      //Format UI Elements before the prompt is generated
       loader.style.display = 'none';
       extraIngredientsDiv.style.display = 'block';
       uploadedImage.style.display = 'none'; // Hide uploaded image when submitting new image
+      handleSubmit(imageFile, promptInput.value);
 
-      handleSubmit(imageFile);
-      //edit.removeAttribute('hidden');
+
+      //Format UI Elements AFTER THE PROMPT IS GENERATED
+      similar_recipe.removeAttribute('hidden');
       regenerate.removeAttribute('hidden');
       copy.removeAttribute('hidden');
       submit.setAttribute('hidden', 'hidden');
@@ -113,7 +256,6 @@ document.addEventListener('DOMContentLoaded', () => {
       startgenerate.setAttribute('hidden', 'hidden');
     }
   };
-
   imageUpload.addEventListener('change', () => {
     if (imageUpload.files.length > 0) {
       cameraInput.value = '';
@@ -191,14 +333,28 @@ document.addEventListener('DOMContentLoaded', () => {
     // Append extra ingredients to the prompt and re-submit to AI
     promptInput.value += "Include the following ingredients: ";
     promptInput.value += `, ${extraIngredients}`;
+    console.log(promptInput.value);
     const file = imageUpload.files[0] || cameraInput.files[0];
     if (file) {
-      handleSubmit(file, true);
+      handleSubmit(file, promptInput.value);
+    }
+  }
+
+  async function previewRecipe(recipeName) {
+    // Append extra ingredients to the prompt and re-submit to AI
+    promptInput.value = "Generate a recipe of " + recipeName + ", the name of the recipe you have provided, the nutritional facts of the recipe and the meal size (estimation of how many number of people it can cater to):";
+    const file = imageUpload.files[0] || cameraInput.files[0];
+    if (file) {
+      handleSubmit(file, promptInput.value);
+      console.log('Generate a recipe of: ' + recipeName);
     }
   }
 
   const updateButton = document.getElementById('updateButton');
   updateButton.addEventListener('click', updateRecipe);
+  preview_recipe_1.addEventListener('click', () => previewRecipe(output_preview_1.innerHTML.toString()));
+  preview_recipe_2.addEventListener('click', () => previewRecipe(output_preview_2.innerHTML.toString()));
+  preview_recipe_3.addEventListener('click', () => previewRecipe(output_preview_3.innerHTML.toString()));
 
   async function callWithRetry(apiFunction, maxAttempts = 3) {
     let attempts = 0;

@@ -67,25 +67,60 @@
       </div>
     </form>
 
-
-    <!-- Extra ingredients input which will be shown after initial response -->
-<div id="extraIngredientsDiv" style="display:none;">
-      <label for="extraIngredients" class="form-label text-center">Update Recipe:</label>
-      <input type="text" id="extraIngredients" placeholder="e.g. butter, cinnamon, nutmeg" class="form-control mb-3">
-      <div class="text-center">
-        <button id="updateButton" class="col-btn w-100">🍳 Update</button>
+    <div id="float" class="similar_recipe" hidden>
+      <div id="float" class="d-flex flex-row justify-content-around">
+        <div class="card">
+          <div class="card-details">
+            <p class="output_preview_1"></p>
+            <p class="text-body"></p>
+          </div>
+          <button id="preview_recipe_1" class="card-button" name='preview_recipe_1' type="button">🔍 Preview Recipe</button>
+        </div>
+  
+        <div class="card">
+          <div class="card-details">
+            <p class="output_preview_2"></p>
+            <p class="text-body"></p>
+          </div>
+          <button id="preview_recipe_2" class="card-button" name='preview_recipe_2' type="button">🔍 Preview Recipe</button>
+        </div>
+  
+        <div class="card">
+          <div class="card-details">
+            <p class="output_preview_3"></p>
+            <p class="text-body"></p>
+          </div>
+          <button id="preview_recipe_3" class="card-button" name='preview_recipe_3' type="button">🔍 Preview Recipe</button>
+        </div>
       </div>
     </div>
+
+      <!-- Extra ingredients input which will be shown after initial response -->
+      <div id="extraIngredientsDiv" style="display:none;">
+        <label for="extraIngredients" class="form-label text-center">Update Recipe:</label>
+        <input type="text" id="extraIngredients" placeholder="e.g. butter, cinnamon, nutmeg" class="form-control mb-3">
+        <div class="text-center">
+          <button id="updateButton" class="col-btn w-70">🍳 Update</button>
+        </div>
+      </div>    
+      <div id="incompatible" style="display:none;" class="alert alert-warning text-center" role="alert">
+        <i class="bi bi-exclamation-triangle"></i>
+        Incompatible ingredients will not be entertained.
+      </div>
+
+
+      </main>
+
 
 
       <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
   </main>
   <script type="module" src="/main.js"></script>
-                    <footer style="text-align: center; opacity: 0.6; background-color: none;">
-                    <br>
-                      <p>All rights reserved to Ultron &copy; 2024</p>
-                    
-                    </footer>
+  <footer style="text-align: center; opacity: 0.6; background-color: none;">
+    <br>
+      <p>All rights reserved to Ultron &copy; 2024</p>
+    
+    </footer>
 </body>
 
 </html>
