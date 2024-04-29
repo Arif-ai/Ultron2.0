@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const preview_recipe_1 = document.getElementById('preview_recipe_1');
   const preview_recipe_2 = document.getElementById('preview_recipe_2');
   const preview_recipe_3 = document.getElementById('preview_recipe_3');
-.
+
 
   copy.addEventListener('click', function () {
     var copyText = output.innerText;
