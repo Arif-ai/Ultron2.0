@@ -266,7 +266,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const file = imageUpload.files[0] || cameraInput.files[0];
     if (file) {
       handleSubmit(file, promptInput.value);
-      console.log('Generate a recipe of: ' + sanitizedRecipeName);
     }
   }
 
