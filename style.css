@@ -1,11 +1,9 @@
 body {
   margin: 24px;
-  font-family: 'Arial';
-  /* Use Gemini font with fallback to sans-serif */
+  font-family: 'Arial', sans-serif;
   --accent-color: #8000ff;
   color: #202124;
   --font-size: 16px;
-  /* Default font size */
   background-color: #efefef;
 }
 
@@ -17,7 +15,7 @@ body {
 
 main {
   width: 100%;
-  padding: 400px;
+  padding: 20px;
   max-width: 460px;
   margin: 0 auto;
   border-radius: 50px;
@@ -25,15 +23,11 @@ main {
 }
 
 #float {
-  /* Your CSS styles for the #float div go here */
-background-color: #ffffff;
-}
-.dark-mode #float{
-  background-color: #131314;
+  background-color: #ffffff;
 }
 
-#float img.image-float {
-  /* Your CSS styles for the images inside the #float div with the class image-float go here */
+.dark-mode #float {
+  background-color: #131314;
 }
 
 div {
@@ -55,8 +49,6 @@ div {
   color: var(--accent-color);
 }
 
-
-
 h1 {
   display: block;
   align-items: center;
@@ -65,7 +57,6 @@ h1 {
   font-size: 24px;
   line-height: 1.5;
   transition: transform 0.3s ease;
-  /* Add transition to the h1 element */
 }
 
 h1::before {
@@ -155,18 +146,15 @@ label {
   -webkit-text-fill-color: transparent;
   animation: move 1s linear infinite;
   background-size: 200% auto;
-  /* Ensure the background size is defined */
 }
 
 @keyframes move {
   0% {
     background-position: 0 0;
-    /* Start position */
   }
 
   100% {
     background-position: 100% 0;
-    /* End position */
   }
 }
 
@@ -177,7 +165,6 @@ button {
   padding: 12px 16px;
   font-family: unset;
   font-size: var(--font-size);
-  /* Use variable for font size */
   transition: background-color 0.3s, color 0.3s;
 }
 
@@ -190,7 +177,6 @@ button {
   opacity: 1;
 }
 
-
 button:focus-visible {
   outline: 2px solid white;
   outline-offset: -4px;
@@ -202,13 +188,11 @@ button:hover {
   color: #fff;
 }
 
-/* Added button styles */
 .btn {
   display: inline-block;
   background-color: var(--accent-color);
   color: white;
   font-size: var(--font-size);
-  /* Use variable for font size */
   border: none;
   border-radius: 10px;
   padding: 12px 16px;
@@ -236,18 +220,17 @@ button:hover {
   border-radius: 10px;
 }
 
-/* features */
 input:read-only {
   background-color: #e7e7e7;
 }
-#answer
-{background-color: #e7e7e7;}
-.dark-mode #answer{}
+
+#answer {
+  background-color: #e7e7e7;
+}
 
 .loader {
   display: block;
   margin: 0 auto;
-  /* Center the element horizontally */
   border: 16px solid #f3f3f3;
   border-top: 16px solid #3498db;
   background-color: #ffffff;
@@ -292,24 +275,16 @@ input:read-only {
   color: #141414;
 }
 
-/* Inverted text color for dark mode */
 .dark-mode h1,
 .dark-mode label,
 .dark-mode p,
 .dark-mode button,
 .dark-mode .output {
   color: #ffffff;
-  /* Inverted text color for dark mode */
 }
 
-/* Apply invert filter to images inside input group in dark mode */
 .dark-mode .invert-on-dark-mode {
   filter: invert(1);
-}
-
-.dark-mode h1 {
-  transform: scale(1);
-  transition: transform 0.3s ease;
 }
 
 .dark-mode main,
@@ -325,37 +300,27 @@ h1:hover {
   transform: scale(1.1);
 }
 
-/* Optional styling for the typing text */
 #typing-text {
   font-size: 24px;
   line-height: 1.5;
   caret-color: transparent;
-  /* Hide the text cursor */
   font-family: 'Helvetica Neue';
-  /* Use monospace font */
   display: inline-block;
-  /* Ensure the container only occupies the necessary width */
   width: 400px;
-  /* Adjust the width as needed */
-  font-size: 24px;
-  font-weight: 900;
   background: linear-gradient(to right, #ff0080, #8000ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: move 1s linear infinite;
   background-size: 200% auto;
-  /* Ensure the background size is defined */
 }
 
 @keyframes move {
   0% {
     background-position: 0 0;
-    /* Start position */
   }
 
   100% {
     background-position: 100% 0;
-    /* End position */
   }
 }
 
@@ -380,48 +345,33 @@ h1:hover {
   display: block;
   margin: 0 auto;
   transition: transform 0.3s linear;
-  /* Adjust transition timing */
 }
 
 .rotate {
   transform: rotateY(180deg);
-  /* Rotate vertically */
 }
 
 .image-float {
   animation: float 3s ease-in-out infinite;
-  /* Add your image below */
   width: 500px;
-  /* or the width of your image */
   height: 500px;
-  /* or the height of your image */
   border-radius: 50px;
-  /* optional, for rounded corners */
 }
 
-
 .card {
-  width: 190px;
-  height: 254px;
   border-radius: 20px;
   background: #f5f5f5;
-  position: relative;
   padding: 1.8rem;
   border: 2px solid var(--accent-color);
   transition: 0.5s ease-out;
-  overflow: visible;
- }
- 
- .card-details {
+}
+
+.card-details {
   color: black;
-  height: 100%;
-  gap: .5em;
-  display: grid;
-  font-size:larger;
-  place-content: center;
- }
- 
- .card-button {
+  font-size: larger;
+}
+
+.card-button {
   transform: translate(-50%, 125%);
   width: 60%;
   border-radius: 1rem;
@@ -435,32 +385,78 @@ h1:hover {
   bottom: 0;
   opacity: 0;
   transition: 0.3s ease-out;
- }
- 
- .text-body {
-  color: rgb(134, 134, 134);
- }
+}
 
- .dark-mode  .text-body {
+.dark-mode .text-body {
   color: rgb(255, 255, 255);
- }
- .dark-mode .card-button{
-  color:;
- }
- 
- /*Text*/
- .text-title {
+}
+
+.dark-mode .alert {
+  color: rgb(255, 255, 0);
+  background-color: rgb(42, 42, 0);
+}
+
+.text-title {
   font-size: 1.5em;
   font-weight: bold;
- }
- 
- /*Hover*/
- .card:hover {
+}
+
+.card:hover {
   border-color: #ff0080;
   box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
- }
- 
- .card:hover .card-button {
+}
+
+.card:hover .card-button {
   transform: translate(-50%, 50%);
   opacity: 1;
- }
+}
+
+.output_preview_1,
+.text-body,
+.text-output {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: rgb(20, 20, 20);
+    margin-bottom: 10px;
+}
+
+.output_preview_1 h1,
+.output_preview_1 h2,
+.output_preview_1 h3,
+.output_preview_1 h4,
+.output_preview_1 h5,
+.output_preview_1 h6,
+.text-body h1,
+.text-body h2,
+.text-body h3,
+.text-body h4,
+.text-body h5,
+.text-body h6,
+.text-output h1,
+.text-output h2,
+.text-output h3,
+.text-output h4,
+.text-output h5,
+.text-output h6 {
+    font-weight: bold;
+}
+
+.output_preview_1 p,
+.text-body p,
+.text-output p {
+    margin-bottom: 10px;
+}
+
+.output_preview_1 ul,
+.text-body ul,
+.text-output ul {
+    margin-bottom: 10px;
+}
+
+.output_preview_1 ul li,
+.text-body ul li,
+.text-output ul li {
+    list-style-type: disc;
+    margin-left: 20px;
+}
