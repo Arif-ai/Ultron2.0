@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const answer = document.querySelector('input[name="answer"]');
   const copy = document.querySelector('button[name="copy"]');
   const preview_recipe_1 = document.getElementById('preview_recipe_1');
-  
+
   // Event listener for copy button
   copy.addEventListener('click', function () {
     var copyText = output.innerText;
@@ -131,9 +131,22 @@ document.addEventListener('DOMContentLoaded', () => {
         const model = genAI.getGenerativeModel({
           model: "gemini-pro-vision",
           safetySettings: [{
-            category: HarmCategory.HARM_CATEGORY_HARASSMENT,
-            threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
-          }, ],
+              category: HarmCategory.HARM_CATEGORY_HARASSMENT,
+              threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+            },
+            {
+              category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+              threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+            },
+            {
+              category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
+              threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+            },
+            {
+              category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
+              threshold: HarmBlockThreshold.BLOCK_LOW_AND_ABOVE,
+            },
+          ],
         });
 
         const result = await model.generateContentStream({
@@ -177,7 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
       startgenerate.setAttribute('hidden', 'hidden');
     }
   };
-  
+
   // Event listener for image upload change
   imageUpload.addEventListener('change', () => {
     if (imageUpload.files.length > 0) {
@@ -209,6 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const suffix = "How can I help you today?";
   let index = 0;
   let direction = 1;
+
   function type() {
     if (direction === 1) {
       typingText.textContent = prefix + suffix.substring(0, index);
