@@ -265,11 +265,12 @@ document.addEventListener('DOMContentLoaded', () => {
       alert("Please enter additional ingredients.");
       return;
     }
-    promptInput.value += "Include this suggestion / ingredients: ";
+    promptInput.value += "Include the following changes to the recipe, either the ingredients: ";
     promptInput.value += `, ${extraIngredients}`;
     const file = imageUpload.files[0] || cameraInput.files[0];
     if (file) {
       handleSubmit(file, promptInput.value);
+      console.log(promptInput.value)
     }
   }
 
@@ -280,6 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const file = imageUpload.files[0] || cameraInput.files[0];
     if (file) {
       handleSubmit(file, promptInput.value);
+      console.log(promptInput.value)
     }
   }
 

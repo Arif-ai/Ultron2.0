@@ -372,19 +372,9 @@ h1:hover {
 }
 
 .card-button {
-  transform: translate(-50%, 125%);
-  width: 60%;
-  border-radius: 1rem;
-  border: none;
+  border-radius: 10px;
   background-color: var(--accent-color);
   color: #fff;
-  font-size: 1rem;
-  padding: .5rem 1rem;
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  opacity: 0;
-  transition: 0.3s ease-out;
 }
 
 .dark-mode .text-body {
@@ -404,11 +394,6 @@ h1:hover {
 .card:hover {
   border-color: #ff0080;
   box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
-}
-
-.card:hover .card-button {
-  transform: translate(-50%, 50%);
-  opacity: 1;
 }
 
 .output_preview_1,
